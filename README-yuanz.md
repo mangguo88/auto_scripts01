@@ -1,4 +1,4 @@
-# auto_zampto 续期 建议每天运行一次
+# auto_yuanz
 
 
 你需要做以下修改：
@@ -8,31 +8,32 @@
 
 - PRIVATE_REPO_TOKEN （用于读取私库的 token，可跟其他库共用）
 
-- ZAMPTO_BATCH （zampto 的账号环境变量，不需要传入server_id）
+- YUANZ_BATCH （yuanz 的账号环境变量，）
 
 ```
-ZAMPTO_BATCH=a1@example.com,pass1
-a2@example.com,pass2,123456:AAxxxxxx,123456789
+YUANZ_BATCH=a1@example.com,pass1,1
+a2@example.com,pass2,0,123456:AAxxxxxx,123456789
 ```
 
 
 ### 格式为:
- email,password,tg_bot_token,tg_chat_id
+ email,password,show_node_flag,tg_bot_token,tg_chat_id
+
 
 
 每行一套数据：
 
-1、不发 TG：email,password
+1、不发 TG：email,password,show_node_flag
 
-2、发 TG：email,password,tg_bot_token,tg_chat_id
+2、发 TG：email,password,show_node_flag,tg_bot_token,tg_chat_id
 
-- ZAMPTO_HY2_PROXY_URL （可选，Hysteria2 代理 URL，可自行改成本仓库里其他项目共用的HY2_PROXY_URL，自己去下面的红框里面改这个红框变量的secrets.ZAMPTO_HY2_PROXY_URL 即可，我这里不跟其他一样的原因是，zamp会检测vpn代理，并不是所有的hy2他都会承认，有些hy2节点会被检测识别为代理，所以我为了不影响其他的，这里单独用了一个 ZAMPTO_HY2_PROXY_URL 环境变量。你如要改名字记得下面2个红框的地方都要改）
+第三个参数show_node_flag 为是否需要发送明细消息，1为需要发送，0以及不传带不需要发送
+
+- HY2_PROXY_URL （可选，Hysteria2 代理 URL，）
 
 ```
 HY2_PROXY_URL='hysteria2://[auth]@[host]:[port]/?sni=xxx&insecure=1&alpn=h3'
 ```
-<img width="998" height="837" alt="CleanShot 2026-03-05 at 09 23 07" src="https://github.com/user-attachments/assets/b9489025-6a73-48e8-a725-ade7ef577a13" />
-
 
 ### 如果不设置此环境变量，脚本将使用直连模式
 
@@ -74,4 +75,4 @@ env:
 ✅ Read and write permissions
 
 ## 3、修改定时任务执行时间。
-### 去zampto-AutoRenew.yml里面修改你的定时任务的执行时间（建议每天运行一次）
+### 去yuanz-*.yml里面修改你的定时任务的执行时间（建议每天运行一次）
