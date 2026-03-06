@@ -19,6 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
+      KATABUMP_BATCH: true
       PROJECT_DIR: katabump
       SCRIPT_NAME: kataBump_renew_batch.py
       SCRIPT_DESC: KataBump 续期脚本
